@@ -1,0 +1,30 @@
+
+// Define the pin for the relay module
+int relayPin = 8; // Change this to the desired relay pin
+
+void setup() {
+  // Initialize the relay pin as an OUTPUT
+  pinMode(relayPin, OUTPUT);
+  // Initially, turn off the sprinkler
+  digitalWrite(relayPin, LOW);
+  // Start serial communication at 9600 bps
+  Serial.begin(9600);
+}
+
+void loop() {
+  // Check for incoming data from Python program
+  if (Serial.available() > 0) {
+    char command = Serial.read();
+    
+    // Check the command received from Python
+    if (command == '1') {
+      // Turn on the sprinkler
+      digitalWrite(relayPin, HIGH);
+      Serial.println("Sprinkler turned on");
+    } else if (command == '0') {
+      // Turn off the sprinkler
+      digitalWrite(relayPin, LOW);
+      Serial.println("Sprinkler turned off");
+    }
+  }
+}

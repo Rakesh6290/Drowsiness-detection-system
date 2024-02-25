@@ -1,0 +1,100 @@
+# Sleep Detection Project
+
+![Sleeping Man](sleep_detection.png)
+
+This project aims to detect instances of drowsiness and sleep in individuals using computer vision techniques and facial landmarks. It provides a real-time solution to monitor a person's eye closure and alert them if they are about to doze off.
+
+## Table of Contents
+
+- [Introduction](#introduction)
+- [Features](#features)
+- [Requirements](#requirements)
+- [Installation](#installation)
+- [Usage](#usage)
+- [How It Works](#how-it-works)
+- [Contributing](#contributing)
+- [License](#license)
+
+## Introduction
+
+Driver fatigue and drowsiness are significant contributors to road accidents. This sleep detection system can be integrated into various applications, such as driver assistance systems, security monitoring, or any scenario where drowsiness detection is vital for safety.
+
+The project utilizes the dlib library for facial landmark detection and OpenCV for image processing. It calculates the eye aspect ratio (EAR) to determine eye closure and alerts the user with a sound when it detects prolonged eye closure indicative of sleep.
+
+## Features
+
+- Real-time eye closure detection using a webcam
+- EAR-based drowsiness detection algorithm
+- Audio alert for prolonged eye closure
+- Simple and intuitive user interface
+
+## Requirements
+
+- Python 3.x
+- OpenCV (cv2) library
+- dlib library
+- NumPy library
+- winsound (for Windows) or PyAudio (for other platforms) for the audio alert
+
+## Installation
+
+1. Clone the repository to your local machine.
+
+```bash
+git clone https://github.com/yourusername/sleep-detection.git
+cd sleep-detection
+```
+
+2. Install the required Python libraries.
+
+```bash
+pip install opencv-python dlib numpy
+```
+
+3. If you are using Windows, no additional installation is required for the sound alert. For other platforms, install PyAudio using pip.
+
+```bash
+pip install pyaudio
+```
+
+## Usage
+
+1. Make sure your webcam is connected to your machine.
+
+2. Run the `detect_sleep.py` script.
+
+```bash
+python detect_sleep.py
+```
+
+3. A window will open showing the webcam feed with the status of the eyes (open/closed) displayed on the screen.
+
+4. If the eyes remain closed for three seconds, an alert sound will play to warn the user of possible drowsiness.
+
+5. Press 'q' to quit the program.
+
+## How It Works
+
+1. The script accesses the webcam using OpenCV and captures real-time frames.
+
+2. It converts each frame to grayscale to simplify processing.
+
+3. The dlib library is used to detect facial landmarks, including the positions of the eyes.
+
+4. The eye aspect ratio (EAR) is calculated to determine the degree of eye closure.
+
+5. If the EAR falls below a threshold value, the script starts counting the duration of eye closure.
+
+6. If the eyes remain closed for three seconds (assuming 30 FPS), an alert sound is played to warn the user.
+
+## Contributing
+
+Contributions to this project are welcome! Whether it's bug fixes, feature enhancements, or documentation improvements, your help is appreciated. Please create a pull request with your changes, and we'll review it together.
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+---
+
+We hope this sleep detection project helps promote safety and prevents accidents caused by drowsiness. Feel free to use and modify the code to suit your specific needs. If you have any questions or suggestions, please create an issue, and we'll be glad to assist you. Happy coding!
